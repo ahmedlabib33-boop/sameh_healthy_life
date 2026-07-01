@@ -249,6 +249,130 @@ a { color: inherit; text-decoration: none; }
   box-shadow: 0 12px 20px rgba(173, 64, 255, 0.28);
 }
 
+div[role="radiogroup"][aria-label="SELECT PROGRAM"],
+div[role="radiogroup"][aria-label="FOOD SLIDE NAV"],
+div[role="radiogroup"][aria-label="LEARNING SLIDE NAV"] {
+  width: 100% !important;
+}
+
+div[role="radiogroup"][aria-label="SELECT PROGRAM"] {
+  display: grid !important;
+  gap: 12px !important;
+  margin-bottom: 16px;
+}
+
+div[role="radiogroup"][aria-label="SELECT PROGRAM"] label[data-baseweb="radio"] {
+  min-height: 46px;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 16px !important;
+  border-radius: 999px !important;
+  border: 1px solid transparent !important;
+  background: transparent !important;
+  color: rgba(240, 247, 255, 0.68) !important;
+  transition: background 180ms ease, color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+div[role="radiogroup"][aria-label="SELECT PROGRAM"] label[data-baseweb="radio"]:hover {
+  background: rgba(255, 255, 255, 0.05) !important;
+  color: rgba(240, 247, 255, 0.92) !important;
+}
+
+div[role="radiogroup"][aria-label="SELECT PROGRAM"] label[data-baseweb="radio"]:has(input:checked) {
+  color: var(--text) !important;
+  border-color: rgba(0, 224, 255, 0.78) !important;
+  background: linear-gradient(115deg, rgba(0, 224, 255, 0.96), rgba(46, 107, 255, 0.9) 54%, rgba(173, 64, 255, 0.86)) !important;
+  box-shadow: 0 14px 28px rgba(0, 224, 255, 0.22), 0 10px 26px rgba(173, 64, 255, 0.26);
+}
+
+div[role="radiogroup"][aria-label="SELECT PROGRAM"] label[data-baseweb="radio"] > div:first-child,
+div[role="radiogroup"][aria-label="SELECT PROGRAM"] label[data-baseweb="radio"] > input,
+div[role="radiogroup"][aria-label="FOOD SLIDE NAV"] label[data-baseweb="radio"] > div:first-child,
+div[role="radiogroup"][aria-label="FOOD SLIDE NAV"] label[data-baseweb="radio"] > input,
+div[role="radiogroup"][aria-label="LEARNING SLIDE NAV"] label[data-baseweb="radio"] > div:first-child,
+div[role="radiogroup"][aria-label="LEARNING SLIDE NAV"] label[data-baseweb="radio"] > input {
+  display: none !important;
+}
+
+div[role="radiogroup"][aria-label="SELECT PROGRAM"] p {
+  color: inherit !important;
+  font-weight: 900 !important;
+  text-align: center !important;
+}
+
+div[role="radiogroup"][aria-label="FOOD SLIDE NAV"],
+div[role="radiogroup"][aria-label="LEARNING SLIDE NAV"] {
+  display: flex !important;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 30px !important;
+  min-height: 42px;
+  margin: 0 0 24px;
+  padding: 0 2px 7px;
+  border: 0 !important;
+  background: transparent !important;
+}
+
+div[role="radiogroup"][aria-label="FOOD SLIDE NAV"] label[data-baseweb="radio"],
+div[role="radiogroup"][aria-label="LEARNING SLIDE NAV"] label[data-baseweb="radio"] {
+  position: relative;
+  min-height: 36px;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: rgba(240, 247, 255, 0.62) !important;
+  transition: color 180ms ease, opacity 180ms ease, transform 220ms ease;
+}
+
+div[role="radiogroup"][aria-label="FOOD SLIDE NAV"] label[data-baseweb="radio"]::after,
+div[role="radiogroup"][aria-label="LEARNING SLIDE NAV"] label[data-baseweb="radio"]::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: -5px;
+  height: 2px;
+  transform: scaleX(0);
+  transform-origin: center;
+  background: linear-gradient(90deg, var(--purple), var(--pink));
+  box-shadow: 0 0 12px rgba(173, 64, 255, 0.7);
+  transition: transform 240ms ease;
+}
+
+div[role="radiogroup"][aria-label="FOOD SLIDE NAV"] label[data-baseweb="radio"]:hover,
+div[role="radiogroup"][aria-label="LEARNING SLIDE NAV"] label[data-baseweb="radio"]:hover {
+  color: rgba(240, 247, 255, 0.92) !important;
+}
+
+div[role="radiogroup"][aria-label="FOOD SLIDE NAV"] label[data-baseweb="radio"]:has(input:checked),
+div[role="radiogroup"][aria-label="LEARNING SLIDE NAV"] label[data-baseweb="radio"]:has(input:checked) {
+  color: var(--text) !important;
+}
+
+div[role="radiogroup"][aria-label="FOOD SLIDE NAV"] label[data-baseweb="radio"]:has(input:checked)::after,
+div[role="radiogroup"][aria-label="LEARNING SLIDE NAV"] label[data-baseweb="radio"]:has(input:checked)::after {
+  transform: scaleX(1);
+}
+
+div[role="radiogroup"][aria-label="FOOD SLIDE NAV"] p,
+div[role="radiogroup"][aria-label="LEARNING SLIDE NAV"] p {
+  color: inherit !important;
+  font-size: 14px !important;
+  font-weight: 900 !important;
+}
+
+.stats-enter {
+  animation: statsEnter 360ms ease both;
+}
+
+@keyframes statsEnter {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 .visual-health {
   margin: 218px 16px 0;
   padding: 24px 18px;
@@ -387,9 +511,6 @@ def sidebar(module: str) -> str:
       <strong>GUARD</strong>
       <span>Control OS 2200</span>
     </div>
-  </div>
-  <div class="visual-nav">
-    <div class="active">{MODULES[module]}</div>
   </div>
   <section class="visual-health">
     <small>HEALTH GUARD</small>
@@ -632,14 +753,19 @@ def ai_box(mode: str) -> None:
         html(panel("إجابة الذكاء", ask_ollama(prompt, mode) if prompt.strip() else "اكتب السؤال بحرية بالعربي أو المصري.", kind="mission"))
 
 
-def food_module(slide: str) -> None:
-    slide = st.selectbox(
-        "اختر شريحة الغذاء",
+def food_slide_nav(slide: str) -> str:
+    return st.radio(
+        "FOOD SLIDE NAV",
         list(FOOD_SLIDES.keys()),
         index=list(FOOD_SLIDES.keys()).index(slide),
         format_func=lambda key: FOOD_SLIDES[key],
         key="food_slide",
+        horizontal=True,
+        label_visibility="collapsed",
     )
+
+
+def food_module(slide: str) -> None:
     html(panel("⚠ تنبيه طبي", DISCLAIMER, kind="warning-panel"))
     if slide == "why":
         food_why()
@@ -666,14 +792,19 @@ def load_courses() -> list[dict[str, str]]:
     return json.loads(path.read_text(encoding="utf-8")) if path.exists() else []
 
 
-def learning_module(active: str) -> None:
-    active = st.selectbox(
-        "اختر شريحة التعلم",
+def learning_slide_nav(active: str) -> str:
+    return st.radio(
+        "LEARNING SLIDE NAV",
         list(LEARNING_SLIDES.keys()),
         index=list(LEARNING_SLIDES.keys()).index(active),
         format_func=lambda key: LEARNING_SLIDES[key],
         key="learning_slide",
+        horizontal=True,
+        label_visibility="collapsed",
     )
+
+
+def learning_module(active: str) -> None:
     content = {
         "intro": ("Marketing for Project Managers", "يعني إنك تعرف توصل قيمة المشروع للعميل، الإدارة، الفريق، والاستيكهولدرز بطريقة واضحة ومقنعة. مش إعلان فقط؛ هو value communication وtrust building."),
         "value": ("Stakeholder Value Proposition", "مين صاحب المصلحة؟ يهتم بإيه؟ المشروع هيسلم قيمة إيه؟ يخاف من أي خطر؟ والرسالة التي يجب أن يسمعها؟"),
@@ -715,22 +846,28 @@ def main() -> None:
     module = st.session_state.module
     main_col, side_col = st.columns([1147, 248], gap="large")
     with side_col:
-        module = st.selectbox(
+        module = st.radio(
             "SELECT PROGRAM",
             list(MODULES.keys()),
             index=list(MODULES.keys()).index(module),
             format_func=lambda key: MODULES[key],
             key="module",
+            label_visibility="visible",
         )
         html(sidebar(module))
     with main_col:
-        html(f'<section class="visual-main">{topbar(module)}{kpis(module)}')
+        html(f'<section class="visual-main">{topbar(module)}')
         if module == "food":
-            food_module(st.session_state.food_slide)
+            food_slide = food_slide_nav(st.session_state.food_slide)
+            html(f'<div class="stats-enter">{kpis(module)}</div>')
+            food_module(food_slide)
         elif module == "medicine":
+            html(f'<div class="stats-enter">{kpis(module)}</div>')
             medicine_module()
         else:
-            learning_module(st.session_state.learning_slide)
+            learning_slide = learning_slide_nav(st.session_state.learning_slide)
+            html(f'<div class="stats-enter">{kpis(module)}</div>')
+            learning_module(learning_slide)
         html("</section>")
     footer()
 
