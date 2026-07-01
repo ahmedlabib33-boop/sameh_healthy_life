@@ -1,0 +1,50 @@
+[
+  {
+    "provider": "HubSpot Academy",
+    "title": "Digital Marketing Certification Course",
+    "status": "Free certification course",
+    "link": "https://academy.hubspot.com/courses/digital-marketing",
+    "last_verified": "2026-07-01",
+    "notes": "Useful for marketing fundamentals, positioning, content, SEO, social, and email."
+  },
+  {
+    "provider": "Coursera",
+    "title": "Project Management Communication, Stakeholders & Leadership",
+    "status": "Coursera audit/free-trial availability can vary by account and region",
+    "link": "https://www.coursera.org/learn/project-management-communication-stakeholders-and-leadership",
+    "last_verified": "2026-07-01",
+    "notes": "Directly relevant to stakeholder communication and leadership."
+  },
+  {
+    "provider": "Coursera",
+    "title": "Communication with Stakeholders",
+    "status": "Coursera audit/free-trial availability can vary by account and region",
+    "link": "https://www.coursera.org/learn/communication-with-stakeholders",
+    "last_verified": "2026-07-01",
+    "notes": "Good match for stakeholder messaging and project alignment."
+  },
+  {
+    "provider": "Alison",
+    "title": "Diploma in Project Management",
+    "status": "Free online course; certificate terms may vary",
+    "link": "https://alison.com/course/diploma-in-project-management-revised-2017",
+    "last_verified": "2026-07-01",
+    "notes": "Project management basics and lifecycle coverage."
+  },
+  {
+    "provider": "edX",
+    "title": "Effective Communication for Program and Project Stakeholders and Teams",
+    "status": "Audit/free access availability can vary; verify before production release",
+    "link": "https://www.edx.org/learn/business-communications/the-university-of-maryland-college-park-effective-communication-for-program-and-project-stakeholders-and-teams",
+    "last_verified": "2026-07-01",
+    "notes": "Relevant for client communication and stakeholder alignment."
+  },
+  {
+    "provider": "HubSpot Academy",
+    "title": "Social Media Marketing Certification Course",
+    "status": "Free certification course",
+    "link": "https://academy.hubspot.com/courses/social-media",
+    "last_verified": "2026-07-01",
+    "notes": "Useful for personal branding and communication strategy."
+  }
+]
