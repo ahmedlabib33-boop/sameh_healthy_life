@@ -255,10 +255,48 @@ div[role="radiogroup"][aria-label="LEARNING SLIDE NAV"] {
   width: 100% !important;
 }
 
+div[data-testid="stRadio"]:has(div[role="radiogroup"][aria-label="SELECT PROGRAM"]) {
+  min-height: calc(100vh - 96px);
+  border-radius: 34px;
+  padding: 30px 16px;
+  background: rgba(6, 9, 22, 0.92);
+  border: 1px solid var(--border);
+  box-shadow: 0 12px 30px rgba(46, 107, 255, 0.1);
+}
+
+div[data-testid="stRadio"]:has(div[role="radiogroup"][aria-label="SELECT PROGRAM"]) label[data-testid="stWidgetLabel"] {
+  position: relative;
+  display: grid !important;
+  grid-template-columns: 44px 1fr;
+  gap: 12px;
+  align-items: center;
+  margin: 0 10px 52px !important;
+  direction: ltr;
+  color: var(--text) !important;
+}
+
+div[data-testid="stRadio"]:has(div[role="radiogroup"][aria-label="SELECT PROGRAM"]) label[data-testid="stWidgetLabel"]::before {
+  content: "";
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--cyan), var(--purple));
+  box-shadow: 0 0 28px rgba(0, 224, 255, 0.45);
+}
+
+div[data-testid="stRadio"]:has(div[role="radiogroup"][aria-label="SELECT PROGRAM"]) label[data-testid="stWidgetLabel"] p {
+  color: var(--text) !important;
+  font-size: 17px !important;
+  line-height: 1.05 !important;
+  font-weight: 900 !important;
+  letter-spacing: 0 !important;
+  white-space: nowrap !important;
+}
+
 div[role="radiogroup"][aria-label="SELECT PROGRAM"] {
   display: grid !important;
   gap: 12px !important;
-  margin-bottom: 16px;
+  margin: 0 16px 16px;
 }
 
 div[role="radiogroup"][aria-label="SELECT PROGRAM"] label[data-baseweb="radio"] {
@@ -318,13 +356,14 @@ div[role="radiogroup"][aria-label="LEARNING SLIDE NAV"] {
 div[role="radiogroup"][aria-label="FOOD SLIDE NAV"] label[data-baseweb="radio"],
 div[role="radiogroup"][aria-label="LEARNING SLIDE NAV"] label[data-baseweb="radio"] {
   position: relative;
-  min-height: 36px;
-  padding: 0 !important;
-  border: 0 !important;
-  border-radius: 0 !important;
-  background: transparent !important;
-  color: rgba(240, 247, 255, 0.62) !important;
-  transition: color 180ms ease, opacity 180ms ease, transform 220ms ease;
+  min-height: 38px;
+  padding: 0 14px !important;
+  border: 1px solid rgba(0, 224, 255, 0.16) !important;
+  border-radius: 999px !important;
+  background: rgba(19, 27, 52, 0.34) !important;
+  color: rgba(190, 216, 238, 0.82) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  transition: background 180ms ease, border-color 180ms ease, color 180ms ease, opacity 180ms ease, transform 220ms ease;
 }
 
 div[role="radiogroup"][aria-label="FOOD SLIDE NAV"] label[data-baseweb="radio"]::after,
@@ -344,12 +383,16 @@ div[role="radiogroup"][aria-label="LEARNING SLIDE NAV"] label[data-baseweb="radi
 
 div[role="radiogroup"][aria-label="FOOD SLIDE NAV"] label[data-baseweb="radio"]:hover,
 div[role="radiogroup"][aria-label="LEARNING SLIDE NAV"] label[data-baseweb="radio"]:hover {
-  color: rgba(240, 247, 255, 0.92) !important;
+  color: rgba(235, 248, 255, 0.96) !important;
+  background: rgba(255, 255, 255, 0.055) !important;
+  border-color: rgba(0, 224, 255, 0.28) !important;
 }
 
 div[role="radiogroup"][aria-label="FOOD SLIDE NAV"] label[data-baseweb="radio"]:has(input:checked),
 div[role="radiogroup"][aria-label="LEARNING SLIDE NAV"] label[data-baseweb="radio"]:has(input:checked) {
   color: var(--text) !important;
+  background: rgba(46, 107, 255, 0.16) !important;
+  border-color: rgba(173, 64, 255, 0.38) !important;
 }
 
 div[role="radiogroup"][aria-label="FOOD SLIDE NAV"] label[data-baseweb="radio"]:has(input:checked)::after,
@@ -502,31 +545,11 @@ div[data-testid="stButton"] button {
     )
 
 
-def sidebar(module: str) -> str:
-    return f"""
-<aside class="visual-sidebar">
-  <div class="visual-brand">
-    <div class="brand-orb"></div>
-    <div>
-      <strong>GUARD</strong>
-      <span>Control OS 2200</span>
-    </div>
-  </div>
-  <section class="visual-health">
-    <small>HEALTH GUARD</small>
-    <b>87%</b>
-    <p>نظام حماية غذائية وتعليم عملي لمهندس محمد سامح. AI fallback نشط عند غياب Ollama.</p>
-  </section>
-</aside>
-"""
-
-
 def topbar(module: str) -> str:
     return f"""
 <header class="visual-topbar">
   <div>
     <h1>{FULL_TITLE}</h1>
-    <p class="visual-subtitle">{ARABIC_NAME} · {MODULES[module]} · واجهة حماية غذائية وتعليم عملي</p>
   </div>
   <div class="visual-actions">
     <div class="visual-search">Search intelligence...</div>
@@ -766,7 +789,6 @@ def food_slide_nav(slide: str) -> str:
 
 
 def food_module(slide: str) -> None:
-    html(panel("⚠ تنبيه طبي", DISCLAIMER, kind="warning-panel"))
     if slide == "why":
         food_why()
     elif slide == "stop":
@@ -854,7 +876,6 @@ def main() -> None:
             key="module",
             label_visibility="visible",
         )
-        html(sidebar(module))
     with main_col:
         html(f'<section class="visual-main">{topbar(module)}')
         if module == "food":

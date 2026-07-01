@@ -47,6 +47,10 @@ Then open:
 http://127.0.0.1:8507
 ```
 
+## Streamlit Cloud deployment
+
+Do not hardcode `server.port` or `server.address` in `.streamlit/config.toml` for Streamlit Cloud. The platform expects its own port, commonly `8501`, and a fixed local port like `8507` will fail health checks.
+
 ## Medical disclaimer
 
 هذا التطبيق للتوعية وتقليل المخاطر الغذائية فقط. لا يشخص السرطان، لا يعالج السرطان، لا يوقف دواء، لا يغير جرعة، ولا يستبدل طبيب الأورام أو أخصائي تغذية أورام. مع تاريخ سرطان أو رجوع أعراض، أي قرار علاج أو صيام أو مكملات أو نظام قاسٍ لازم يتم مع الفريق الطبي.
