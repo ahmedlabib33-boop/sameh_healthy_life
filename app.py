@@ -200,11 +200,12 @@ html, body, [data-testid="stAppViewContainer"], .stApp {
 }
 
 [data-testid="stHeader"], [data-testid="stToolbar"], [data-testid="stSidebar"], #MainMenu, footer { display: none !important; }
-.block-container { max-width: none !important; padding: 32px 42px 58px 23px !important; }
+*, *::before, *::after { box-sizing: border-box; }
+.block-container { max-width: none !important; padding: 32px 42px 76px 23px !important; overflow-x: hidden; direction: rtl; }
 [data-testid="stHorizontalBlock"] { direction: rtl; align-items: stretch; }
-[data-testid="column"] { direction: rtl; }
+[data-testid="column"] { direction: rtl; min-width: 0 !important; }
 [data-testid="stVerticalBlock"] { gap: 0.95rem !important; }
-.element-container { margin: 0 !important; }
+.element-container { margin: 0 !important; min-width: 0 !important; max-width: 100% !important; }
 p { margin: 0; }
 a { color: inherit; text-decoration: none; }
 
@@ -330,6 +331,7 @@ div[role="radiogroup"][aria-label="SELECT PROGRAM"] {
 
 div[role="radiogroup"][aria-label="SELECT PROGRAM"] label[data-baseweb="radio"] {
   min-height: 46px;
+  max-width: 100%;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -394,6 +396,7 @@ div[role="radiogroup"][aria-label="MEDICINE SLIDE NAV"] label[data-baseweb="radi
 div[role="radiogroup"][aria-label="LIFESTYLE SLIDE NAV"] label[data-baseweb="radio"],
 div[role="radiogroup"][aria-label="LEARNING SLIDE NAV"] label[data-baseweb="radio"] {
   position: relative;
+  max-width: 100%;
   min-height: 38px;
   padding: 0 14px !important;
   border: 1px solid rgba(0, 224, 255, 0.16) !important;
@@ -454,6 +457,7 @@ div[role="radiogroup"][aria-label="LEARNING SLIDE NAV"] p {
   font-size: 14px !important;
   font-weight: 900 !important;
   text-align: right !important;
+  overflow-wrap: anywhere !important;
 }
 
 .stats-enter {
@@ -477,7 +481,7 @@ div[role="radiogroup"][aria-label="LEARNING SLIDE NAV"] p {
 .visual-health b { display: block; margin: 20px 0 14px; color: var(--text); font-size: 40px; line-height: 1; font-weight: 900; }
 .visual-health p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.45; }
 
-.visual-main { max-width: 1147px; padding-top: 8px; direction: rtl; }
+.visual-main { max-width: 1147px; width: 100%; min-width: 0; padding-top: 8px; direction: rtl; text-align: right; }
 .visual-topbar { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; margin-bottom: 28px; }
 .visual-topbar h1 { margin: 0 0 6px; color: var(--text); font-size: 34px; line-height: 1.1; font-weight: 900; direction: ltr; text-align: right; }
 .visual-subtitle { margin: 0; color: var(--muted); font-size: 15px; }
@@ -492,15 +496,17 @@ div[role="radiogroup"][aria-label="LEARNING SLIDE NAV"] p {
 .visual-kpi strong { display: block; margin-top: 18px; font-size: 34px; line-height: 1; font-weight: 900; }
 .visual-kpi small { display: block; margin-top: 8px; color: var(--accent); font-size: 13px; font-weight: 900; }
 
-.visual-grid { display: grid; grid-template-columns: 1.55fr 0.72fr; gap: 24px; }
+.visual-grid { display: grid; grid-template-columns: 1.55fr 0.72fr; gap: 24px; min-width: 0; }
 .visual-grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .visual-grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.visual-panel { position: relative; overflow: hidden; border-radius: 30px; border: 1px solid rgba(51, 82, 133, 0.36); background: rgba(14, 19, 38, 0.62); box-shadow: 0 12px 24px rgba(0, 224, 255, 0.08); padding: 26px 30px; min-height: 100%; }
+.visual-panel { position: relative; overflow: hidden; max-width: 100%; min-width: 0; border-radius: 30px; border: 1px solid rgba(51, 82, 133, 0.36); background: rgba(14, 19, 38, 0.62); box-shadow: 0 12px 24px rgba(0, 224, 255, 0.08); padding: 26px 30px; min-height: 100%; direction: rtl; text-align: right; }
 .visual-panel h2, .visual-panel h3 { margin: 0 0 14px; color: var(--text); font-size: 22px; font-weight: 900; }
-.visual-panel p, .visual-panel li { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.75; }
+.visual-panel p, .visual-panel li { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.75; overflow-wrap: anywhere; }
 .visual-panel ul { margin: 12px 0 0; padding-right: 18px; }
 .visual-panel.compact { padding: 20px; border-radius: 24px; }
 .mission { min-height: 242px; border-color: rgba(0, 224, 255, 0.35); box-shadow: 0 12px 24px rgba(0, 224, 255, 0.12); }
+.visual-panel:has(.learning-table),
+.visual-panel:has(.lifestyle-table) { overflow-x: auto; overflow-y: hidden; }
 .learning-table { width: 100%; border-collapse: separate; border-spacing: 0 10px; direction: ltr; }
 .learning-table th { color: var(--cyan); font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; text-align: left; padding: 0 14px 4px; }
 .learning-table td { color: rgba(222, 235, 249, 0.9); font-size: 14px; line-height: 1.55; padding: 16px 14px; background: rgba(19, 27, 52, 0.56); border-top: 1px solid rgba(51, 82, 133, 0.42); border-bottom: 1px solid rgba(51, 82, 133, 0.42); vertical-align: top; }
@@ -518,7 +524,7 @@ div[role="radiogroup"][aria-label="LEARNING SLIDE NAV"] p {
 .lecture-section p { color: rgba(222, 235, 249, 0.9); font-size: 14px; line-height: 1.72; margin: 8px 0 0; }
 .lecture-section ul { margin: 10px 0 0; padding-left: 20px; color: rgba(222, 235, 249, 0.9); }
 .lecture-section li { margin: 6px 0; font-size: 14px; line-height: 1.65; }
-.lecture-point { margin: 9px 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 14px; align-items: start; }
+.lecture-point { margin: 9px 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 14px; align-items: start; min-width: 0; }
 .lecture-en { color: rgba(222, 235, 249, 0.92); font-size: 14px; line-height: 1.68; direction: ltr; text-align: left; }
 .lecture-ar { direction: rtl; text-align: right; color: rgba(124, 232, 255, 0.94); font-size: 13px; line-height: 1.75; border-right: 2px solid rgba(0, 224, 255, 0.45); padding: 4px 10px 4px 0; }
 .lecture-ar b { color: var(--cyan); font-weight: 900; }
@@ -555,6 +561,7 @@ div[role="radiogroup"][aria-label="LEARNING SLIDE NAV"] p {
 div[data-testid="stTextInput"] input, div[data-testid="stTextArea"] textarea {
   direction: rtl !important;
   text-align: right !important;
+  max-width: 100% !important;
   color: var(--text) !important;
   background: rgba(14, 19, 38, 0.62) !important;
   border: 1px solid rgba(51, 82, 133, 0.45) !important;
@@ -584,6 +591,7 @@ div[data-testid="stSelectbox"] [data-baseweb="select"] span {
 
 div[data-testid="stButton"] button {
   width: 100%;
+  max-width: 100%;
   min-height: 50px;
   border-radius: 18px;
   color: var(--text);
@@ -617,16 +625,95 @@ div[data-testid="stButton"] button {
 .visual-footer .mark { color: var(--text); font-weight: 900; margin-left: 2px; }
 
 @media (max-width: 980px) {
-  .block-container { padding: 0 12px 58px !important; }
+  .block-container { padding: 10px 10px 82px !important; }
+  [data-testid="stHorizontalBlock"] { flex-direction: column !important; gap: 14px !important; }
+  [data-testid="column"] { width: 100% !important; flex: 1 1 100% !important; }
+  div[data-testid="stRadio"]:has(div[role="radiogroup"][aria-label="SELECT PROGRAM"]) {
+    min-height: auto !important;
+    border-radius: 24px;
+    padding: 18px 12px;
+    margin-bottom: 12px;
+  }
+  div[data-testid="stRadio"]:has(div[role="radiogroup"][aria-label="SELECT PROGRAM"]) label[data-testid="stWidgetLabel"] {
+    margin: 0 8px 18px !important;
+    grid-template-columns: 1fr 36px;
+  }
+  div[data-testid="stRadio"]:has(div[role="radiogroup"][aria-label="SELECT PROGRAM"]) label[data-testid="stWidgetLabel"]::before {
+    width: 36px;
+    height: 36px;
+  }
+  div[data-testid="stRadio"]:has(div[role="radiogroup"][aria-label="SELECT PROGRAM"]) label[data-testid="stWidgetLabel"] p {
+    font-size: 15px !important;
+  }
+  div[role="radiogroup"][aria-label="SELECT PROGRAM"] {
+    gap: 8px !important;
+    margin: 0;
+  }
+  div[role="radiogroup"][aria-label="SELECT PROGRAM"] label[data-baseweb="radio"] {
+    min-height: 40px;
+    padding: 0 12px !important;
+  }
+  div[role="radiogroup"][aria-label="FOOD SLIDE NAV"],
+  div[role="radiogroup"][aria-label="MEDICINE SLIDE NAV"],
+  div[role="radiogroup"][aria-label="LIFESTYLE SLIDE NAV"],
+  div[role="radiogroup"][aria-label="LEARNING SLIDE NAV"] {
+    gap: 8px !important;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding: 0 2px 10px;
+    margin-bottom: 16px;
+    scrollbar-width: thin;
+  }
+  div[role="radiogroup"][aria-label="FOOD SLIDE NAV"] label[data-baseweb="radio"],
+  div[role="radiogroup"][aria-label="MEDICINE SLIDE NAV"] label[data-baseweb="radio"],
+  div[role="radiogroup"][aria-label="LIFESTYLE SLIDE NAV"] label[data-baseweb="radio"],
+  div[role="radiogroup"][aria-label="LEARNING SLIDE NAV"] label[data-baseweb="radio"] {
+    flex: 0 0 auto;
+    min-height: 36px;
+    padding: 0 11px !important;
+  }
+  div[role="radiogroup"][aria-label="FOOD SLIDE NAV"] p,
+  div[role="radiogroup"][aria-label="MEDICINE SLIDE NAV"] p,
+  div[role="radiogroup"][aria-label="LIFESTYLE SLIDE NAV"] p,
+  div[role="radiogroup"][aria-label="LEARNING SLIDE NAV"] p {
+    font-size: 12.5px !important;
+    white-space: nowrap;
+  }
   .visual-shell { grid-template-columns: 1fr; padding: 12px 0 58px; }
   .visual-sidebar { min-height: auto; }
   .visual-health { margin-top: 28px; }
   .visual-topbar, .visual-actions { flex-direction: column; align-items: stretch; }
+  .visual-topbar { gap: 14px; margin-bottom: 18px; }
+  .visual-topbar h1 { font-size: 25px; line-height: 1.2; overflow-wrap: anywhere; }
+  .visual-main { max-width: 100%; padding-top: 0; }
   .visual-search, .visual-deploy { width: auto; }
   .visual-kpis, .visual-grid, .visual-grid.two, .visual-grid.three { grid-template-columns: 1fr; }
+  .visual-kpis { gap: 12px; margin-bottom: 18px; }
+  .visual-kpi { min-height: auto; padding: 16px; border-radius: 22px; }
+  .visual-kpi strong { font-size: 28px; margin-top: 12px; }
+  .visual-panel { padding: 18px 16px; border-radius: 22px; }
+  .visual-panel h2, .visual-panel h3 { font-size: 18px; line-height: 1.35; }
+  .visual-panel p, .visual-panel li { font-size: 14px; line-height: 1.7; }
+  .mission { min-height: auto; }
+  .learning-table, .lifestyle-table { min-width: 720px; }
+  .lecture-detail summary { padding: 18px 16px; font-size: 17px; }
+  .lecture-body { padding: 16px; }
+  .lecture-section { padding: 14px; border-radius: 18px; }
   .lecture-point { grid-template-columns: 1fr; gap: 6px; }
   .smart-checks, .life-flow, .life-timeline { grid-template-columns: 1fr; }
+  .life-node, .life-step, .smart-check { min-height: auto; }
   .bars { gap: 12px; overflow-x: auto; }
+}
+
+@media (max-width: 520px) {
+  .block-container { padding: 8px 8px 84px !important; }
+  .visual-topbar h1 { font-size: 22px; }
+  .visual-kpi .label { font-size: 12px; }
+  .visual-kpi small { font-size: 12px; }
+  .visual-panel { padding: 16px 14px; border-radius: 20px; }
+  .learning-table, .lifestyle-table { min-width: 640px; }
+  .visual-footer { font-size: 0.76rem; min-height: 32px; }
 }
 </style>
 """
